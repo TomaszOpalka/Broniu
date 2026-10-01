@@ -17,9 +17,9 @@ export const theme = {
 
   // chrome: jasny, ciemny, jasny odblask, ciemny, jasny (ikony i podpis)
   metal1: '#ffffff',
-  metal2: '#b4c3c7',
+  metal2: '#c6d3d6',
   metal3: '#f4fbfc',
-  metal4: '#7d8e93',
+  metal4: '#93a4a9',
   metal5: '#d9e6e8',
   textGlow: 'rgba(34, 232, 218, 0.45)',
 

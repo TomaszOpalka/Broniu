@@ -105,6 +105,8 @@ function circle(radius: number, n = 128): [number, number, number][] {
   })
 }
 
+let glintHost: HTMLElement | null = null
+
 export function CD() {
   const group = useRef<THREE.Group>(null)
   const angle = useSpinPhysics()
@@ -121,6 +123,11 @@ export function CD() {
     g.rotation.y = angle.current
     g.rotation.z = Math.sin(t * bob.speed * 0.6) * 0.035
     g.rotation.x = -0.08
+
+    // Połysk ikon i podpisu jedzie razem z obrotem płyty (0..2 = jeden cykl gradientu)
+    glintHost ??= document.querySelector<HTMLElement>('.overlay')
+    const shine = (((angle.current / Math.PI) % 1) + 1) % 1
+    glintHost?.style.setProperty('--shine', (shine * 2).toFixed(4))
   })
 
   return (

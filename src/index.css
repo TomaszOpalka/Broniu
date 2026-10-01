@@ -37,7 +37,19 @@ body {
   gap: 10px;
 }
 
-.social__defs { position: absolute; }
+/* Wspólny chromowy gradient: ostry biały połysk, który jedzie z obrotem płyty (--shine ustawia CD.tsx) */
+.social__glyph,
+.signature__ink {
+  --chrome: linear-gradient(
+    100deg,
+    var(--metal2) 0%, var(--metal4) 16%, var(--metal2) 30%,
+    var(--metal1) 42%, #fff 50%, var(--metal1) 58%,
+    var(--metal2) 72%, var(--metal4) 86%, var(--metal2) 100%
+  );
+  background: var(--chrome) repeat-x;
+  background-size: 200% 100%;
+  background-position: calc(var(--shine, 0) * 100%) 0;
+}
 
 .social__btn {
   --size: 52px;
@@ -53,10 +65,11 @@ body {
   pointer-events: auto;
   transition: transform 0.15s ease, background 0.2s ease;
 }
-.social__btn svg {
+.social__glyph {
   width: 46%;
   height: 46%;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.55));
+  -webkit-mask: var(--glyph) center / contain no-repeat;
+  mask: var(--glyph) center / contain no-repeat;
 }
 .social__btn--big { --size: 64px; }
 .social__btn:hover { background: rgba(255, 255, 255, 0.14); }
@@ -73,19 +86,8 @@ body {
   display: block;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    100deg,
-    var(--metal1) 0%, var(--metal2) 22%, var(--metal3) 40%,
-    var(--metal4) 60%, var(--metal5) 80%, var(--metal2) 100%
-  );
-  background-size: 220% 100%;
-  animation: sheen 7s ease-in-out infinite alternate;
   -webkit-mask: url('./assets/signature.png') center / contain no-repeat;
   mask: url('./assets/signature.png') center / contain no-repeat;
-}
-@keyframes sheen {
-  from { background-position: 0% 0; }
-  to { background-position: 100% 0; }
 }
 
 /* Podpowiedź "zakręć płytą" */
