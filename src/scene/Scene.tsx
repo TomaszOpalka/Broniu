@@ -1,4 +1,5 @@
 import { useFrame } from '@react-three/fiber'
+import { BackSide } from 'three'
 import { Environment, Lightformer } from '@react-three/drei'
 import { CD } from './CD'
 import { RetroGrid } from './RetroGrid'
@@ -18,6 +19,11 @@ export function Scene() {
     <>
       {/* Studio z samych Lightformerów: 0 KB assetów. Główny refleks leci z prawego górnego rogu. */}
       <Environment resolution={256} frames={1}>
+        {/* delikatne tło otoczenia: odbicia nie schodzą do czerni */}
+        <mesh scale={100}>
+          <sphereGeometry />
+          <meshBasicMaterial color="#2a6f78" side={BackSide} />
+        </mesh>
         <Lightformer form="rect" intensity={1.6} color="#dff6f8" position={[0, 1, 8]} scale={[12, 7, 1]} target={[0, 0, 0]} />
         <Lightformer form="rect" intensity={3.5} color="#c9f7f4" position={[-8, 1, 0]} scale={[6, 6, 1]} target={[0, 0, 0]} />
         <Lightformer form="rect" intensity={3.5} color="#ffffff" position={[8, -1, 0]} scale={[6, 6, 1]} target={[0, 0, 0]} />
