@@ -27,12 +27,12 @@ function makeFaceTextures() {
 
   const cone = g.createConicGradient(0.6, c, c);
   const stops = [
-    "#a69df7",
-    "#7aa8ff",
-    "#6af2e0",
-    "#c8ff8a",
-    "#ffd27a",
-    "#a69df7",
+    "#5fd8ff",
+    "#6f9dff",
+    "#4fe0c0",
+    "#8fe58a",
+    "#4fd0e8",
+    "#5fd8ff",
   ];
   stops.forEach((s, i) => cone.addColorStop(i / (stops.length - 1), s));
   g.globalAlpha = 0.55;
@@ -147,7 +147,7 @@ export function CD() {
           metalness={1}
           clearcoat={1}
           clearcoatRoughness={0.08}
-          iridescence={1}
+          iridescence={0.35}
           iridescenceIOR={1.7}
           iridescenceThicknessRange={[200, 700]}
           envMapIntensity={1.4}
