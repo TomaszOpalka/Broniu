@@ -1,11 +1,3 @@
-/* Wrzuć plik fontu do public/fonts/signature.woff2 i odkomentuj
-@font-face {
-  font-family: 'Signature';
-  src: url('/fonts/signature.woff2') format('woff2');
-  font-display: swap;
-}
-*/
-
 * { box-sizing: border-box; margin: 0; }
 
 html, body, #root {
@@ -16,7 +8,7 @@ html, body, #root {
 
 body {
   background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 55%, var(--bg-bottom) 100%);
-  color: var(--text);
+
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -45,6 +37,8 @@ body {
   gap: 10px;
 }
 
+.social__defs { position: absolute; }
+
 .social__btn {
   --size: 52px;
   width: var(--size);
@@ -52,7 +46,6 @@ body {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  color: var(--icon-fg);
   background: var(--icon-bg);
   border: 1px solid var(--icon-border);
   backdrop-filter: blur(10px);
@@ -60,19 +53,56 @@ body {
   pointer-events: auto;
   transition: transform 0.15s ease, background 0.2s ease;
 }
-.social__btn svg { width: 46%; height: 46%; }
+.social__btn svg {
+  width: 46%;
+  height: 46%;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.55));
+}
 .social__btn--big { --size: 64px; }
 .social__btn:hover { background: rgba(255, 255, 255, 0.14); }
 .social__btn:active { transform: scale(0.92); }
 
+/* Podpis: czcionka z atlasu liter użyta jako maska, wypełniona chromem */
 .signature {
-  font-family: 'Signature', Impact, 'Arial Narrow Bold', sans-serif;
-  font-weight: 400;
-  font-size: clamp(2rem, 8vw, 3.4rem);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--text);
-  transform: skewX(-6deg);
-  text-shadow: 2px 0 var(--text-glow-a), -2px 0 var(--text-glow-b), 0 0 18px var(--text-glow-a);
+  width: clamp(230px, 56vw, 380px);
+  aspect-ratio: 1087 / 150;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 14px var(--text-glow));
   user-select: none;
 }
+.signature__ink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    var(--metal1) 0%, var(--metal2) 22%, var(--metal3) 40%,
+    var(--metal4) 60%, var(--metal5) 80%, var(--metal2) 100%
+  );
+  background-size: 220% 100%;
+  animation: sheen 7s ease-in-out infinite alternate;
+  -webkit-mask: url('./assets/signature.png') center / contain no-repeat;
+  mask: url('./assets/signature.png') center / contain no-repeat;
+}
+@keyframes sheen {
+  from { background-position: 0% 0; }
+  to { background-position: 100% 0; }
+}
+
+/* Podpowiedź "zakręć płytą" */
+.hint {
+  position: fixed;
+  left: 50%;
+  top: 46%;
+  width: 150px;
+  translate: -50% -50%;
+  pointer-events: none;
+  animation: hint-in 0.5s ease both, hint-out 0.6s ease 4.6s forwards;
+}
+.hint__svg { width: 100%; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5)); }
+.hint__hand { animation: swipe 1.5s ease-in-out infinite; }
+@keyframes swipe {
+  0%, 100% { transform: translateX(-26px); }
+  50% { transform: translateX(26px); }
+}
+@keyframes hint-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hint-out { to { opacity: 0; } }

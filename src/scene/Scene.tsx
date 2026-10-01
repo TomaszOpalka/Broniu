@@ -6,9 +6,12 @@ import { Shadow } from './Shadow'
 import { theme } from '../theme'
 
 export function Scene() {
-  // Na pionowym ekranie odsuwamy kamerę, żeby płyta mieściła się na szerokość.
+  // Pionowy ekran: odsuwamy kamerę, żeby płyta mieściła się na szerokość.
+  // Szeroki ekran: podnosimy kamerę, płyta z cieniem ląduje ok. 60 px niżej.
   useFrame(({ camera, size }) => {
-    camera.position.z = Math.max(6.2, 4.6 / (size.width / size.height))
+    const aspect = size.width / size.height
+    camera.position.z = Math.max(6.2, 4.6 / aspect)
+    camera.position.y = aspect > 1.2 ? 0.5 : 0.2
   })
 
   return (

@@ -14,11 +14,14 @@ export const theme = {
 
   iconBg: 'rgba(8, 40, 42, 0.62)',
   iconBorder: 'rgba(255, 255, 255, 0.14)',
-  iconFg: '#ffffff',
 
-  text: '#ffffff',
-  textGlowA: '#ff2d95',
-  textGlowB: '#22e8da',
+  // chrome: jasny, ciemny, jasny odblask, ciemny, jasny (ikony i podpis)
+  metal1: '#ffffff',
+  metal2: '#b4c3c7',
+  metal3: '#f4fbfc',
+  metal4: '#7d8e93',
+  metal5: '#d9e6e8',
+  textGlow: 'rgba(34, 232, 218, 0.45)',
 
   light: '#ffffff',
 } as const

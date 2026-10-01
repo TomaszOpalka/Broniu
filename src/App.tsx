@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber'
 import { PerformanceMonitor } from '@react-three/drei'
 import { Scene } from './scene/Scene'
 import { SocialBar } from './ui/SocialBar'
+import { SwipeHint } from './ui/SwipeHint'
 import { artist } from './config'
 
 function App() {
@@ -20,9 +21,13 @@ function App() {
         <Scene />
       </Canvas>
 
+      <SwipeHint />
+
       <div className="overlay">
         <SocialBar />
-        <h1 className="signature">{artist}</h1>
+        <h1 className="signature" aria-label={artist}>
+          <span className="signature__ink" />
+        </h1>
       </div>
     </>
   )

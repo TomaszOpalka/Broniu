@@ -1,12 +1,11 @@
 export const artist = 'Simon Broniu'
 
-// Linki dodasz później: wystarczy podmienić '#'.
 export const links = {
-  instagram: '#',
-  spotify: '#',
-  youtube: '#',
-  appleMusic: '#',
-  tiktok: '#',
+  instagram: 'https://www.instagram.com/simon_broniu',
+  spotify: 'https://open.spotify.com/artist/3507DvbzwripyhdeYylzAD',
+  youtube: 'https://youtube.com/@simonbroniu',
+  appleMusic: 'https://music.apple.com/pl/artist/simon-broniu/6811883446?l=pl',
+  tiktok: 'https://www.tiktok.com/@simon.broniu',
 } as const
 
 export const spin = {
@@ -22,3 +21,6 @@ export const bob = {
   amplitude: 0.13,
   speed: 2.1,
 } as const
+
+// Podpowiedź "zakręć płytą": pojawia się raz, po tylu ms od wejścia.
+export const hintDelayMs = 3000
