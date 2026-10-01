@@ -1,0 +1,78 @@
+/* Wrzuć plik fontu do public/fonts/signature.woff2 i odkomentuj
+@font-face {
+  font-family: 'Signature';
+  src: url('/fonts/signature.woff2') format('woff2');
+  font-display: swap;
+}
+*/
+
+* { box-sizing: border-box; margin: 0; }
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 55%, var(--bg-bottom) 100%);
+  color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stage {
+  position: fixed !important;
+  inset: 0;
+  touch-action: none;
+  cursor: grab;
+}
+.stage:active { cursor: grabbing; }
+
+.overlay {
+  position: fixed;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 0 16px max(22px, env(safe-area-inset-bottom));
+  pointer-events: none;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social__btn {
+  --size: 52px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--icon-fg);
+  background: var(--icon-bg);
+  border: 1px solid var(--icon-border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  pointer-events: auto;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+.social__btn svg { width: 46%; height: 46%; }
+.social__btn--big { --size: 64px; }
+.social__btn:hover { background: rgba(255, 255, 255, 0.14); }
+.social__btn:active { transform: scale(0.92); }
+
+.signature {
+  font-family: 'Signature', Impact, 'Arial Narrow Bold', sans-serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 8vw, 3.4rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+  transform: skewX(-6deg);
+  text-shadow: 2px 0 var(--text-glow-a), -2px 0 var(--text-glow-b), 0 0 18px var(--text-glow-a);
+  user-select: none;
+}
