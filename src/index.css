@@ -103,8 +103,8 @@ body {
 .hint__svg { width: 100%; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5)); }
 .hint__hand { animation: swipe 1.5s ease-in-out infinite; }
 @keyframes swipe {
-  0%, 100% { transform: translateX(-26px); }
-  50% { transform: translateX(26px); }
+  0%, 100% { transform: translateX(26px); }
+  50% { transform: translateX(-26px); }
 }
 @keyframes hint-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes hint-out { to { opacity: 0; } }
